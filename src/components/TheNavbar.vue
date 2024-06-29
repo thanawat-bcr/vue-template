@@ -43,7 +43,7 @@ const items = computed(() => ([
 </script>
 
 <template>
-  <div class="the-navbar">
+  <div class="the-navbar fixed top-0 inset-x-0">
     <Menubar :model="items">
       <template #item="{ item, props, hasSubmenu }">
         <router-link v-if="item.route" v-slot="{ href, navigate }" :to="item.route" custom>
