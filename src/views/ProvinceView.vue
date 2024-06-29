@@ -1,9 +1,17 @@
 <script setup lang='ts'>
-useFetch('/api/provinces/', { method: 'GET' })
+const { provinces, districts, subDistricts } = storeToRefs(useProvinceStore())
+const { fetchProvinces, fetchDistricts, fetchSubDistricts } = useProvinceStore()
+onMounted(() => {
+  fetchProvinces()
+})
 </script>
 
 <template>
-  <div class="province-view flex h-full justify-center items-center">
-    <span class="text-4xl font-bold text-emerald-600">PROVINCE</span>
+  <div class="province-view flex flex-col h-full overflow-hidden">
+    <div class="flex gap-x-4 h-full outline">
+      <ColumnList title="Provinces" :items="provinces" @select="fetchDistricts" />
+      <ColumnList title="Districts" :items="districts" @select="fetchSubDistricts" />
+      <ColumnList title="Sub Districts" :items="subDistricts" />
+    </div>
   </div>
 </template>
