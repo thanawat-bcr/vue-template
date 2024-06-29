@@ -1,9 +1,9 @@
-import type { District, Province, SubDistrict } from '@/types/models/location'
+import type { Location } from '@/types/models/location'
 
 export const useProvinceStore = defineStore('province', () => {
-  const provinces = ref<Province[]>([])
-  const districts = ref<District[]>([])
-  const subDistricts = ref<SubDistrict[]>([])
+  const provinces = ref<Location[]>([])
+  const districts = ref<Location[]>([])
+  const subDistricts = ref<Location[]>([])
 
   const fetchProvinces = async () => {
     provinces.value = await useFetch('/api/provinces/', { method: 'GET' })
